@@ -3,28 +3,38 @@ var CommentBox = React.createClass({
 		$.ajax({
 			url:this.props.url,
 			dataType:"json",
-			cache:false,
-			success:function(data){
-				this.setState({data:data});
-			}.bind(this),
-			error:function(xhr,status,err){
-				console.error(this.this.props.url,status,err.toString());
-			}.bind(this)
+			cache:false
+		}).done((data)=>{
+			this.setState({data:data});
+		}).fail((xhr)=>{
+			console.error(xhr.status);
 		});
 	},
-	getInitialstate:function(){
-		return {data:[]};
+	handleCommentSubmit:function(comment){
+		$.ajax({
+			url:this.props.url,
+			dataType:"json",
+			type:"POST",
+			data:comment
+		}).done((data)=>{
+			this.setState({data:data});
+		}).fail((xhr)=>{
+			console.error(xhr.status);
+		});
+	},
+	getInitialState:function(){
+		return {data:[]};//初始化this.state
 	},
 	componentDidMount:function(){
 		this.loadCommentsFromServer();
-		setinterval(this.loadCommentsFromServer,this.props.pollInterval);
+		setInterval(this.loadCommentsFromServer,this.props.pollInterval);
 	},
 	render: function() {
 		return (
 			<div className="commentBox">
-				<h1>commentList</h1>
+				<h1>Comments</h1>
 				<CommentList data={this.state.data}/>
-				<CommentForm/>
+				<CommentForm onCommentSubmit={this.handleCommentSubmit}/>
 			</div>
 		);
 	}
@@ -48,11 +58,25 @@ var CommentList=React.createClass({
 });
 
 var CommentForm=React.createClass({
+	handleSubmit:function(){
+		e.preventDefault();
+		var author=React.findDOMNode(this.refs.author).value.trim();
+		var text=React.findDOMNode(this.refs.text).value.trim();
+		if(!text||!author){
+			return;
+		}
+		this.props.onCommentSubmit({author:author,text:text});
+		React.findDOMNode(this.refs.author).value="";
+		React.findDOMNode(this.refs.text).value="";
+		return;
+	},
 	render: function() {
 		return (
-			<div className="commentForm">
-			Hello, world! I am a CommentForm.
-			</div>
+			<form className="commentForm" onSubmit={this.handleSubmit}>
+				<input type="text" ref="author" placeholder="Your name"/>
+				<input type="text" ref="text" placeholder="Say something..."/>
+				<input type="submit" value="Post"/>
+			</form>
 		);
 	}
 });
@@ -73,11 +97,6 @@ var Comment=React.createClass({
 		);
 	}
 });
-
-var data = [
-  {author: "赖传峰", text: "这是一个提交"},
-  {author: "Microsoft", text: "这是一个**MarkDown**"}
-];
 
 React.render(
   <CommentBox url="/api/comments" pollInterval={2000}/>,

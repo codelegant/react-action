@@ -4,24 +4,38 @@ var CommentBox = React.createClass({
 	displayName: "CommentBox",
 
 	loadCommentsFromServer: function loadCommentsFromServer() {
+		var _this = this;
+
 		$.ajax({
 			url: this.props.url,
 			dataType: "json",
-			cache: false,
-			success: (function (data) {
-				this.setState({ data: data });
-			}).bind(this),
-			error: (function (xhr, status, err) {
-				console.error(this["this"].props.url, status, err.toString());
-			}).bind(this)
+			cache: false
+		}).done(function (data) {
+			_this.setState({ data: data });
+		}).fail(function (xhr) {
+			console.error(xhr.status);
 		});
 	},
-	getInitialstate: function getInitialstate() {
-		return { data: [] };
+	handleCommentSubmit: function handleCommentSubmit(comment) {
+		var _this2 = this;
+
+		$.ajax({
+			url: this.props.url,
+			dataType: "json",
+			type: "POST",
+			data: comment
+		}).done(function (data) {
+			_this2.setState({ data: data });
+		}).fail(function (xhr) {
+			console.error(xhr.status);
+		});
+	},
+	getInitialState: function getInitialState() {
+		return { data: [] }; //初始化this.state
 	},
 	componentDidMount: function componentDidMount() {
 		this.loadCommentsFromServer();
-		setinterval(this.loadCommentsFromServer, this.props.pollInterval);
+		setInterval(this.loadCommentsFromServer, this.props.pollInterval);
 	},
 	render: function render() {
 		return React.createElement(
@@ -30,10 +44,10 @@ var CommentBox = React.createClass({
 			React.createElement(
 				"h1",
 				null,
-				"commentList"
+				"Comments"
 			),
 			React.createElement(CommentList, { data: this.state.data }),
-			React.createElement(CommentForm, null)
+			React.createElement(CommentForm, { onCommentSubmit: this.handleCommentSubmit })
 		);
 	}
 });
@@ -60,11 +74,25 @@ var CommentList = React.createClass({
 var CommentForm = React.createClass({
 	displayName: "CommentForm",
 
+	handleSubmit: function handleSubmit() {
+		e.preventDefault();
+		var author = React.findDOMNode(this.refs.author).value.trim();
+		var text = React.findDOMNode(this.refs.text).value.trim();
+		if (!text || !author) {
+			return;
+		}
+		this.props.onCommentSubmit({ author: author, text: text });
+		React.findDOMNode(this.refs.author).value = "";
+		React.findDOMNode(this.refs.text).value = "";
+		return;
+	},
 	render: function render() {
 		return React.createElement(
-			"div",
-			{ className: "commentForm" },
-			"Hello, world! I am a CommentForm."
+			"form",
+			{ className: "commentForm", onSubmit: this.handleSubmit },
+			React.createElement("input", { type: "text", ref: "author", placeholder: "Your name" }),
+			React.createElement("input", { type: "text", ref: "text", placeholder: "Say something..." }),
+			React.createElement("input", { type: "submit", value: "Post" })
 		);
 	}
 });
@@ -89,7 +117,5 @@ var Comment = React.createClass({
 		);
 	}
 });
-
-var data = [{ author: "赖传峰", text: "这是一个提交" }, { author: "Microsoft", text: "这是一个**MarkDown**" }];
 
 React.render(React.createElement(CommentBox, { url: "/api/comments", pollInterval: 2000 }), document.getElementById('content'));
