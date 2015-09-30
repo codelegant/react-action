@@ -1,5 +1,25 @@
 "use strict";
 
+var Comment = React.createClass({
+	displayName: "Comment",
+
+	rawMarkup: function rawMarkup() {
+		var rawMarkup = marked(this.props.children.toString(), { sanitize: true });
+		return { __html: rawMarkup };
+	},
+	render: function render() {
+		return React.createElement(
+			"div",
+			{ className: "comments" },
+			React.createElement(
+				"h2",
+				{ className: "commentAuthor" },
+				this.props.author
+			),
+			React.createElement("span", { dangerouslySetInnerHTML: this.rawMarkup() })
+		);
+	}
+});
 var CommentBox = React.createClass({
 	displayName: "CommentBox",
 
@@ -96,27 +116,6 @@ var CommentForm = React.createClass({
 			React.createElement("input", { type: "text", ref: "author", placeholder: "Your name" }),
 			React.createElement("input", { type: "text", ref: "text", placeholder: "Say something..." }),
 			React.createElement("input", { type: "submit", value: "Post" })
-		);
-	}
-});
-
-var Comment = React.createClass({
-	displayName: "Comment",
-
-	rawMarkup: function rawMarkup() {
-		var rawMarkup = marked(this.props.children.toString(), { sanitize: true });
-		return { __html: rawMarkup };
-	},
-	render: function render() {
-		return React.createElement(
-			"div",
-			{ className: "comments" },
-			React.createElement(
-				"h2",
-				{ className: "commentAuthor" },
-				this.props.author
-			),
-			React.createElement("span", { dangerouslySetInnerHTML: this.rawMarkup() })
 		);
 	}
 });

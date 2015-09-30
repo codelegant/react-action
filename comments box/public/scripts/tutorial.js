@@ -1,3 +1,19 @@
+var Comment=React.createClass({
+	rawMarkup:function(){
+		var rawMarkup=marked(this.props.children.toString(),{sanitize:true});
+		return {__html:rawMarkup};
+	},
+	render: function() {
+		return (
+			<div className="comments">
+				<h2 className="commentAuthor">
+					{this.props.author}
+				</h2>
+				<span dangerouslySetInnerHTML={this.rawMarkup()} />
+			</div>
+		);
+	}
+});
 var CommentBox = React.createClass({
 	loadCommentsFromServer:function(){
 		$.ajax({
@@ -80,23 +96,6 @@ var CommentForm=React.createClass({
 				<input type="text" ref="text" placeholder="Say something..."/>
 				<input type="submit" value="Post"/>
 			</form>
-		);
-	}
-});
-
-var Comment=React.createClass({
-	rawMarkup:function(){
-		var rawMarkup=marked(this.props.children.toString(),{sanitize:true});
-		return {__html:rawMarkup};
-	},
-	render: function() {
-		return (
-			<div className="comments">
-				<h2 className="commentAuthor">
-					{this.props.author}
-				</h2>
-				<span dangerouslySetInnerHTML={this.rawMarkup()} />
-			</div>
 		);
 	}
 });
