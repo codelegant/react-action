@@ -114,7 +114,7 @@ var FilterableProductTable = React.createClass({
   render: function render() {
     return React.createElement(
       "div",
-      null,
+      { className: "col-md-4 col-md-offset-4" },
       React.createElement(SearchBar, null),
       React.createElement(ProductTable, { products: this.props.products })
     );

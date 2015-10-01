@@ -67,7 +67,7 @@ var SearchBar=React.createClass({
 var FilterableProductTable=React.createClass({
   render: function() {
     return (
-      <div>
+      <div className="col-md-4 col-md-offset-4">
         <SearchBar/>
         <ProductTable products={this.props.products}/>
       </div>
