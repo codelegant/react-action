@@ -92,14 +92,14 @@ var SearchBar = React.createClass({
     return React.createElement(
       "form",
       null,
-      React.createElement("input", { className: "form-control", type: "text", placeholder: "Search..." }),
+      React.createElement("input", { className: "form-control", type: "text", placeholder: "Search...", value: this.props.filterText }),
       React.createElement(
         "p",
         null,
         React.createElement(
           "label",
           null,
-          React.createElement("input", { type: "checkbox" }),
+          React.createElement("input", { type: "checkbox", checked: this.props.inStockOnly }),
           "",
           "Only show products in stock"
         )
