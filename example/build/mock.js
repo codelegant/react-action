@@ -55,7 +55,7 @@ var ProductTable = React.createClass({
         return;
       }
       if (product.category !== lastCategory) {
-        rows.push(React.createElement("productCategoryRow", { category: product.category, key: product.category }));
+        rows.push(React.createElement(ProductCategoryRow, { category: product.category, key: product.category }));
       }
       rows.push(React.createElement(ProductRow, { product: product, key: product.name }));
       lastCategory = product.category;
@@ -105,7 +105,7 @@ var SearchBar = React.createClass({
         type: "text",
         placeholder: "Search...",
         value: this.props.filterText,
-        refs: "filterTextInput",
+        ref: "filterTextInput",
         onChange: this.handleChange }),
       React.createElement(
         "p",
@@ -116,7 +116,7 @@ var SearchBar = React.createClass({
           React.createElement("input", {
             type: "checkbox",
             checked: this.props.inStockOnly,
-            refs: "inStockOnlyInput",
+            ref: "inStockOnlyInput",
             onChange: this.handleChange }),
           "",
           "Only show products in stock"
