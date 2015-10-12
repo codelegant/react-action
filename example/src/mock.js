@@ -37,7 +37,7 @@ var ProductTable=React.createClass({
       }
       rows.push(<ProductRow product={product} key={product.name} />);
       lastCategory=product.category;
-    }).bind(this);
+    });
     return (
       <table className="table">
         <thead>
