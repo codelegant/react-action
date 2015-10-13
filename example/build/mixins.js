@@ -1,51 +1,38 @@
-"use strict";
-
 var SetIntervalMixin = {
-	componentWillMount: function componentWillMount() {
+	componentWillMount: function() {
 		this.intervals = [];
 	},
-	setInterval: (function (_setInterval) {
-		function setInterval() {
-			return _setInterval.apply(this, arguments);
-		}
-
-		setInterval.toString = function () {
-			return _setInterval.toString();
-		};
-
-		return setInterval;
-	})(function () {
+	setInterval: function() {
 		this.intervals.push(setInterval.apply(null, arguments));
-	}),
-	componentWillUnmount: function componentWillUnmount() {
+	},
+	componentWillUnmount: function() {
 		this.intervals.map(clearInterval);
-	}
-};
+	},
+}
 
-var TickTock = React.createClass({
-	displayName: "TickTock",
-
+var TickTock = React.createClass({displayName: "TickTock",
 	mixins: [SetIntervalMixin],
-	getInitialState: function getInitialState() {
+	getInitialState: function() {
 		return {
 			seconds: 0
 		};
 	},
-	componentDidMount: function componentDidMount() {
-		this.setInterval(this.tick, 1000);
+	componentDidMount:function(){
+		this.setInterval(this.tick,1000);
 	},
-	tick: function tick() {
-		this.setState({ seconds: this.state.seconds + 1 });
+	tick:function(){
+		this.setState({seconds:this.state.seconds+1});
 	},
-	render: function render() {
-		return React.createElement(
-			"p",
-			null,
-			"React has been running for ",
-			this.state.seconds,
-			" seconds."
+	render: function() {
+		return (
+			React.createElement("p", null, 
+				"React has been running for ", this.state.seconds, " seconds."
+			)
 		);
 	}
 });
 
-React.render(React.createElement(TickTock, null), document.getElementById("example"));
+React.render(
+	React.createElement(TickTock, null),
+	document.getElementById("example")
+);
