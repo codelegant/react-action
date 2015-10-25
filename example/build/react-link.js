@@ -1,16 +1,15 @@
-var WithLink=React.createClass({displayName: "WithLink",
-	mixins:[React.addons.LinkedStateMixin],
-	getInitialState:function(){
-		return {message:"Hello"};
+"use strict";
+
+var WithLink = React.createClass({
+	displayName: "WithLink",
+
+	mixins: [React.addons.LinkedStateMixin],
+	getInitialState: function getInitialState() {
+		return { message: "Hello" };
 	},
-	render:function(){
-		return React.createElement("input", {type: "text", valueLink: this.linkState("message")});
+	render: function render() {
+		return React.createElement("input", { type: "text", valueLink: this.linkState("message") });
 	}
 });
 
-
-
-React.render(
-	React.createElement(WithLink, null),
-	document.body
-	);
+React.render(React.createElement(WithLink, null), document.body);

@@ -9,34 +9,45 @@
 // 	}
 // });
 
-var FancyCheckbox = React.createClass({displayName: "FancyCheckbox",
-	getInitialState:function(){
-		return {checked:this.props.checked}
-	},
-	handleChange:function(event){
-		this.setState({checked:event.target.checked});
-	},
-  render: function() {
-    var $__0=    this.props,title=$__0.title,other=(function(source, exclusion) {var rest = {};var hasOwn = Object.prototype.hasOwnProperty;if (source == null) {throw new TypeError();}for (var key in source) {if (hasOwn.call(source, key) && !hasOwn.call(exclusion, key)) {rest[key] = source[key];}}return rest;})($__0,{title:1});
-    var checked=this.state.checked;
+'use strict';
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+var FancyCheckbox = React.createClass({
+  displayName: 'FancyCheckbox',
+
+  getInitialState: function getInitialState() {
+    return { checked: this.props.checked };
+  },
+  handleChange: function handleChange(event) {
+    this.setState({ checked: event.target.checked });
+  },
+  render: function render() {
+    var _props = this.props;
+    var title = _props.title;
+
+    var other = _objectWithoutProperties(_props, ['title']);
+
+    var checked = this.state.checked;
     var fancyClass = checked ? 'FancyChecked' : 'FancyUnchecked';
     var fancyTitle = checked ? 'X ' + title : 'O ' + title;
-    return (
-      React.createElement("label", null, 
-        React.createElement("input", React.__spread({},  other, 
-          {checked: checked, 
-          onChange: this.handleChange, 
-          className: fancyClass, 
-          type: "checkbox"})), 
-        fancyTitle
-      )
+    return React.createElement(
+      'label',
+      null,
+      React.createElement('input', _extends({}, other, {
+        checked: checked,
+        onChange: this.handleChange,
+        className: fancyClass,
+        type: 'checkbox' })),
+      fancyTitle
     );
   }
 });
 
-React.render(
-	React.createElement(FancyCheckbox, {title: "LaiChuanfeng", checked: true, onClick: console.log.bind(console)}, 
-		"Hello world!"
-	),
-	document.body
-);
+React.render(React.createElement(
+  FancyCheckbox,
+  { title: 'LaiChuanfeng', checked: true, onClick: console.log.bind(console) },
+  'Hello world!'
+), document.body);

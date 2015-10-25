@@ -1,22 +1,21 @@
-var Link=React.createClass({displayName: "Link",
-	getInitialState:function(){
-		return {message:"Hello!"};
+"use strict";
+
+var Link = React.createClass({
+	displayName: "Link",
+
+	getInitialState: function getInitialState() {
+		return { message: "Hello!" };
 	},
-	handleChange:function(newValue){
-		this.setState({message:newValue});
+	handleChange: function handleChange(newValue) {
+		this.setState({ message: newValue });
 	},
-	render: function() {
-		var valueLink={
-			value:this.state.message,
-			requestChange:this.handleChange
-		}
-		return (
-			React.createElement("input", {type: "text", valueLink: valueLink})
-		);
+	render: function render() {
+		var valueLink = {
+			value: this.state.message,
+			requestChange: this.handleChange
+		};
+		return React.createElement("input", { type: "text", valueLink: valueLink });
 	}
 });
 
-React.render(
-React.createElement(Link, null),
-document.body
-	);
+React.render(React.createElement(Link, null), document.body);
