@@ -7,7 +7,7 @@ module.exports = {
     'product_entry':'./public/src/product.js'
   },
   output: {
-    path: path.join(__dirname + '/public/dist/'),
+    path: path.join(__dirname + '/dist/'),
     filename: PROD ? '[name].min.js' : '[name].js'//[name].js
   },
   module: {
