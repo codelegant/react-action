@@ -5,7 +5,7 @@
  */
 import React from 'react';
 
-class ProductRow extends React.Component {
+export default class ProductRow extends React.Component {
   constructor() {
     super();
   }
