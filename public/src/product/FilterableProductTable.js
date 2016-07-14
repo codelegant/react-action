@@ -9,13 +9,33 @@ import ProductTable from './ProductTable';
 
 export default class FilterableProductTable extends React.Component {
   constructor() {
-    super()
+    super();
+    this.state = {
+      filterText : '',
+      inStockOnly: false
+    };
+    this._handleUserInput = this._handleUserInput.bind(this);
+  }
+
+  _handleUserInput(filterText, inStockOnly) {
+    return this.setState({
+      filterText : filterText,
+      inStockOnly: inStockOnly
+    });
   }
 
   render() {
     return <div>
-      <SearchBar/>
-      <ProductTable products={this.props.products}/>
+      <SearchBar
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+          onUserInput={this._handleUserInput}
+      />
+      <ProductTable
+          products={this.props.products}
+          filterText={this.state.filterText}
+          inStockOnly={this.state.inStockOnly}
+      />
     </div>
   }
 }

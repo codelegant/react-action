@@ -63,7 +63,6 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	/**
-	 * Created by CodeLai on 2016/7/14.
 	 * Author: codelegant
 	 * Email: laichuanfeng@hotmail.com
 	 * DateTime: 2016/7/14 16:21
@@ -21149,17 +21148,40 @@
 	  function FilterableProductTable() {
 	    _classCallCheck(this, FilterableProductTable);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(FilterableProductTable).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(FilterableProductTable).call(this));
+
+	    _this.state = {
+	      filterText: '',
+	      inStockOnly: false
+	    };
+	    _this._handleUserInput = _this._handleUserInput.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(FilterableProductTable, [{
+	    key: '_handleUserInput',
+	    value: function _handleUserInput(filterText, inStockOnly) {
+	      return this.setState({
+	        filterText: filterText,
+	        inStockOnly: inStockOnly
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        null,
-	        _react2.default.createElement(_SearchBar2.default, null),
-	        _react2.default.createElement(_ProductTable2.default, { products: this.props.products })
+	        _react2.default.createElement(_SearchBar2.default, {
+	          filterText: this.state.filterText,
+	          inStockOnly: this.state.inStockOnly,
+	          onUserInput: this._handleUserInput
+	        }),
+	        _react2.default.createElement(_ProductTable2.default, {
+	          products: this.props.products,
+	          filterText: this.state.filterText,
+	          inStockOnly: this.state.inStockOnly
+	        })
 	      );
 	    }
 	  }]);
@@ -21204,21 +21226,36 @@
 	  function SearchBar() {
 	    _classCallCheck(this, SearchBar);
 
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(SearchBar).call(this));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SearchBar).call(this));
+
+	    _this._handleChange = _this._handleChange.bind(_this);
+	    return _this;
 	  }
 
 	  _createClass(SearchBar, [{
+	    key: "_handleChange",
+	    value: function _handleChange() {
+	      return this.props.onUserInput(this.refs.filterTextInput.value, this.refs.inStockOnlyInput.checked);
+	    }
+	  }, {
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
 	        "form",
 	        null,
-	        _react2.default.createElement("input", { type: "text", placeholder: "Search..." }),
+	        _react2.default.createElement("input", { type: "text",
+	          placeholder: "Search...",
+	          ref: "filterTextInput",
+	          onChange: this._handleChange,
+	          value: this.props.filterText }),
 	        _react2.default.createElement(
 	          "p",
 	          null,
-	          _react2.default.createElement("input", { type: "checkbox" }),
-	          ' ',
+	          _react2.default.createElement("input", { type: "checkbox",
+	            ref: "inStockOnlyInput",
+	            onChange: this._handleChange,
+	            checked: this.props.inStockOnly }),
+	          '',
 	          "Only show product in stock"
 	        )
 	      );
@@ -21278,13 +21315,19 @@
 	  _createClass(ProductTable, [{
 	    key: 'render',
 	    value: function render() {
+	      var _this2 = this;
+
 	      var rows = [];
 	      var lastCategory = null;
 	      this.props.products.forEach(function (product) {
+	        if (product.name.indexOf(_this2.props.filterText) === -1 || !product.stocked && _this2.props.inStockOnly) return;
+
 	        if (product.category !== lastCategory) {
-	          rows.push(_react2.default.createElement(_ProductCategoryRow2.default, { category: product.category, key: product.category }));
+	          rows.push(_react2.default.createElement(_ProductCategoryRow2.default, { category: product.category,
+	            key: product.category }));
 	        }
-	        rows.push(_react2.default.createElement(_ProductRow2.default, { product: product, key: product.name }));
+	        rows.push(_react2.default.createElement(_ProductRow2.default, { product: product,
+	          key: product.name }));
 	        lastCategory = product.category;
 	      });
 	      return _react2.default.createElement(
