@@ -1,39 +1,44 @@
 var path = require('path');
 var webpack = require('webpack');
-var process = require('process');
-var PROD = JSON.parse(process.env.PROD_ENV || 0);
 module.exports = {
   entry: {
-    'product_entry':'./public/src/product.js'
+    'product_entry': ['./public/src/product.js', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server',]
   },
   output: {
     path: path.join(__dirname + '/dist/'),
-    filename: PROD ? '[name].min.js' : '[name].js'//[name].js
+    filename: '[name].js',
+    publicPath: '/assets/'
   },
   module: {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel',
-        exclude: /node_modules/,
-        query: {
-          presets: ["react", "es2015", "stage-0"]
-        }
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015,presets[]=stage-0'],// short for babel-loader
+        exclude: /node_modules/
       },
       {
         test: /\.css$/,
-        loader: 'style!css'
+        loader: 'style!css'// right-to-left and the loader are separated by '!'. Short for style-loader!css-loader
       }
     ]
   },
-  plugins: PROD ? [
+  plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')// production | true
+        NODE_ENV: JSON.stringify(true)// production | true
+        // NODE_ENV: 'development'// production | true
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false}
-    })
-  ] : []
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    contentBase: './view/',//where index.html is
+    publicPath: '/assets/',//虚拟目录，脚本所在文件夹，与output.publicPath一致，与页面使用一致
+    hot: true,
+    historyApiFallback: true,
+    host: 'localhost',
+    port: 3000,
+    stats: {colors: true},
+    headers: {'Access-Control-Allow-Origin': '*'}
+  }
 };
