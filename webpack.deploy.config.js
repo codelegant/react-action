@@ -7,7 +7,8 @@ var path = require('path');
 var webpack = require("webpack");
 module.exports = {
   entry: {
-    'product_entry': './public/src/product.js'
+    'product_entry': './public/src/product',
+    'demo': './public/src/demo',
   },
   output: {
     path: path.join(__dirname + '/dist/'),
