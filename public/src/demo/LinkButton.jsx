@@ -3,9 +3,9 @@
  * Email: codelai@dotdotbuy.com
  * DateTime: 2016/7/15 17:17
  */
-import React from 'react';
+import React,{Component} from 'react';
 
-export default class LinkButton extends React.Component {
+export default class LinkButton extends Component {
   constructor() {
     super();
     this.state = {liked: false};
