@@ -5,17 +5,15 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Component from './demo/SpreadAttributes'
+import Component from './demo/SpreadAttributes';
 import LikeButton from './demo/LinkButton';
 import Avatar from './demo/Avatar';
 import MulitComponent from './demo/MulitipleComponents';
-import { PropValid } from './demo/ReusableComponents';
-import { TransferProp } from './demo/ReusableComponents'
-import { TickTock } from './demo/ReusableComponents';
+import { PropValid,TransferProp,TickTock } from './demo/ReusableComponents';
 
 import '../css/product.css';
 
-let props = {};
+const props = {};
 props.foo = 'lai';
 props.bar = 'chuanfeng';
 
@@ -32,7 +30,7 @@ ReactDOM.render(
     document.getElementById('div_4'));
 
 
-let invalidData = [1, 2, 3];
+const invalidData = [1, 2, 3];
 ReactDOM.render(
     <PropValid
         invalidData={invalidData}
@@ -42,4 +40,4 @@ ReactDOM.render(
 
 ReactDOM.render(<TransferProp href="https://baidu.com"/>, document.getElementById('div_6'));
 
-ReactDOM.render(<TickTock/>, document.getElementById('div_7'));
+// ReactDOM.render(<TickTock/>, document.getElementById('div_7'));

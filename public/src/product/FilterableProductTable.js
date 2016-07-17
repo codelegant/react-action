@@ -19,13 +19,13 @@ export default class FilterableProductTable extends React.Component {
 
   _handleUserInput(filterText, inStockOnly) {
     return this.setState({
-      filterText : filterText,
-      inStockOnly: inStockOnly
+      filterText,
+      inStockOnly
     });
   }
 
   render() {
-    return <div>
+    return (<div>
       <SearchBar
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
@@ -36,6 +36,6 @@ export default class FilterableProductTable extends React.Component {
           filterText={this.state.filterText}
           inStockOnly={this.state.inStockOnly}
       />
-    </div>
+    </div>);
   }
 }

@@ -19,9 +19,9 @@ export default class LinkButton extends Component {
   }
 
   render() {
-    let text=this.state.liked?'like':'haven\'t liked';
-    return <p onClick={this.handleClick}>
+    const text=this.state.liked?'like':'haven\'t liked';
+    return (<p onClick={this.handleClick}>
       You {text} this.Click to toggle.
-    </p>
+    </p>);
   }
 };

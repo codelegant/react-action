@@ -10,13 +10,13 @@ import ProductRow from './ProductRow';
 
 export default class ProductTable extends React.Component {
   constructor() {
-    super()
+    super();
   }
 
   render() {
-    let rows = [];
+    const rows = [];
     let lastCategory = null;
-    this.props.products.forEach((product)=> {
+    this.props.products.forEach(product=> {
       if (product.name.indexOf(this.props.filterText) === - 1
           || (! product.stocked && this.props.inStockOnly))
         return;
@@ -29,7 +29,7 @@ export default class ProductTable extends React.Component {
                             key={product.name}/>);
       lastCategory = product.category;
     });
-    return <table>
+    return (<table>
       <thead>
       <tr>
         <th>Name</th>
@@ -37,6 +37,6 @@ export default class ProductTable extends React.Component {
       </tr>
       </thead>
       <tbody>{rows}</tbody>
-    </table>
+    </table>);
   }
 }

@@ -7,7 +7,6 @@
 import React,{Component,PropTypes} from 'react';
 
 export class PropValid extends Component {
-
   static propTypes = {
     //属性验证
     invalidData: PropTypes.array,
@@ -19,31 +18,28 @@ export class PropValid extends Component {
   };
 
   render() {
-    return <p>Prop Valid
+    return (<p>Prop Valid
       {this.props.defaultProp && this.props.defaultProp}
       {this.props.span}
       {this.props.name}
-    </p>
+    </p>);
   }
 }
 
 export class TransferProp extends Component {
   render() {
-    return <a {...this.props}>Click</a>
+    return <a {...this.props}>Click</a>;
   }
 }
 
 let SetIntervalMixin = {
   componentWillMount(){
-    'use strict';
     this.intervals = [];
   },
   setInterval(){
-    'use strict';
     this.intervals.push(setInterval.apply(null.arguments));
   },
   componentWillUnmount(){
-    'use strict';
     this.intervals.map(clearInterval);
   }
 };
@@ -66,9 +62,9 @@ export class TickTock extends Component {
   }
 
   render() {
-    return <p>
+    return (<p>
       React has been runing for {this.state.seconds} seconds.
-    </p>
+    </p>);
   }
 
 }

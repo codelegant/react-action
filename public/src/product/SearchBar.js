@@ -19,7 +19,7 @@ export default class SearchBar extends React.Component {
   }
 
   render() {
-    return <form>
+    return (<form>
       <input type="text"
              placeholder="Search..."
              ref="filterTextInput"
@@ -33,6 +33,6 @@ export default class SearchBar extends React.Component {
         {''}
         Only show product in stock
       </p>
-    </form>
+    </form>);
   }
 }
