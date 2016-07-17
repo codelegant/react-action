@@ -6,11 +6,10 @@
 
 import React from 'react';
 
-export default class Component extends React.Component{
-  constructor(){
-    super();
-  }
-  render(){
-    return <div>{this.props.foo} {this.props.bar}</div>;
-  }
-}
+/**
+ * Stateless Functions
+ * @param props
+ * @constructor
+ */
+const Component = props=><div>{props.foo} {props.bar}</div>;
+export default Component;

@@ -4,7 +4,7 @@
  * Homepage: http://laichuanfeng.com/
  * Date: 2016/7/16
  */
-import React,{Component,PropTypes} from 'react';
+import React, { Component, PropTypes } from 'react';
 
 export class PropValid extends Component {
   static propTypes = {
@@ -26,45 +26,9 @@ export class PropValid extends Component {
   }
 }
 
-export class TransferProp extends Component {
-  render() {
-    return <a {...this.props}>Click</a>;
-  }
-}
-
-let SetIntervalMixin = {
-  componentWillMount(){
-    this.intervals = [];
-  },
-  setInterval(){
-    this.intervals.push(setInterval.apply(null.arguments));
-  },
-  componentWillUnmount(){
-    this.intervals.map(clearInterval);
-  }
-};
-
-export class TickTock extends Component {
-  constructor() {
-    super();
-    this.state = { seconds: 0 };
-    this.tick = this.tick.bind(this);
-  }
-
-  static mixin = [SetIntervalMixin];
-
-  componentDidMount() {
-    this.setInterval(this.tick, 1000);
-  }
-
-  tick() {
-    this.setState({ seconds: this.state.seconds + 1 });
-  }
-
-  render() {
-    return (<p>
-      React has been runing for {this.state.seconds} seconds.
-    </p>);
-  }
-
-}
+/**
+ * Stateless Functions
+ * @param props
+ * @constructor
+ */
+export const TransferProp = props=><a {...props}>Click</a>;

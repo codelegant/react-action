@@ -6,12 +6,9 @@
  */
 import React from 'react';
 
-export default class CustomOl extends React.Component {
-  render() {
-    const items = [];
-    this.props.results.forEach(result=> {
-      items.push(<li key={`result-${result.id}`}>{result.text}</li>);
-    });
-    return <ol>{items}</ol>;
-  }
-}
+const CustomOl = props=> {
+  const items = [];
+  props.results.forEach(result=>items.push(<li key={`result-${result.id}`} >{result.text}</li>));
+  return <ol>{items}</ol>;
+};
+export default CustomOl;

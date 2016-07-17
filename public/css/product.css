@@ -1,3 +1,36 @@
 body {
-    padding: 20px
+  padding : 20px
+}
+
+
+div[id^="div_"] {
+  padding : 5px;
+  margin  : 10px;
+  border : 1px solid #ccc;
+}
+
+.example-enter {
+  opacity : 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity    : 1;
+  transition : opacity .5s ease-in;
+}
+
+.example-leave {
+  opacity : 1;
+}
+
+.example-leave.example-leave-active {
+  opacity    : 0.01;
+  transition : opacity .3s ease-in;
+}
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }
