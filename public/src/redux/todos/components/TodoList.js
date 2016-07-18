@@ -5,23 +5,25 @@
  */
 import React from 'react';
 import Todo from './Todo';
-
-export default class TodoList extends React.Component {
-  render() {
-    return (
-        <ul>
-          {this.props.todos.map((todo, index)=>
-              <Todo {...todo} onClick={()=>this.props.onTodoClick(index)}
-                    key={index} />
-          )}
-        </ul>
-    );
-  }
-}
+const PropTypes = React.PropTypes;
+const TodoList = props=>(
+    <ul>
+      {props.todos.map(todo=>
+          <Todo
+              {...todo}
+              key={todo.id}
+              onClick={()=>props.onTodoClick(todo.id)}
+          />
+      )}
+    </ul>
+);
 TodoList.propTypes = {
-  onTodoClick: React.PropTypes.func.isRequired,
-  todos      : React.PropTypes.arrayOf(React.PropTypes.shape({
-    text     : React.PropTypes.string.isRequired,
-    completed: React.PropTypes.bool.isRequired
+  onTodoClick: PropTypes.func.isRequired,
+  todos      : PropTypes.arrayOf(React.PropTypes.shape({
+    id       : PropTypes.number.isRequired,
+    text     : PropTypes.string.isRequired,
+    completed: PropTypes.bool.isRequired
   }).isRequired).isRequired
 };
+
+export default TodoList;
