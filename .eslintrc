@@ -16,8 +16,8 @@
   },
   "globals": {},
   "rules": {
-    "semi": [2,"always"],
-    "comma-dangle": [2,"never"],
+    "semi": [2, "always"],
+    "comma-dangle": [2, "never"],
     "no-cond-assign": [2],
     "no-constant-condition": [2],
     "no-control-regex": [2],
@@ -44,19 +44,20 @@
     "no-empty-pattern": [2],
     "no-multi-spaces": [2],
     "no-unused-labels": [1],
+    "no-unused-vars": [0],
     "no-void": [2],
     "quotes": [
-      2,"single",{
+      2, "single", {
         "avoidEscape": true,
         "allowTemplateLiterals": true
       }
     ],
-    "strict": [2,"safe"],
-    "dot-location": [2,"property"],
+    "strict": [2, "safe"],
+    "dot-location": [2, "property"],
     "no-label-var": [2],
     "no-shadow-restricted-names": [2],
     "no-undef": [2],
-    "init-declarations": [2,"always"],
+    "init-declarations": [2, "always"],
     "no-catch-shadow": [2],
     "no-delete-var": [2],
     //ES6 语法
@@ -72,34 +73,34 @@
     "no-var": [2],
     "no-new-object": [2],
     "object-shorthand": [2],
-    "quote-props": [2,"as-needed"],
+    "quote-props": [2, "as-needed"],
     "no-array-constructor": [2],
     "array-callback-return": [1],
     "template-curly-spacing": [2],
     "prefer-rest-params": [1],
     "no-param-reassign": [2],
     "prefer-arrow-callback": [1],
-    "arrow-body-style": [2,"as-needed"],
-    "arrow-parens": [2,"as-needed"],
+    "arrow-body-style": [2, "as-needed"],
+    "arrow-parens": [2, "as-needed"],
     "no-confusing-arrow": [
-      2,{
+      2, {
         "allowParens": false
       }
     ],
     "no-useless-constructor": [2],
     "no-duplicate-imports": [2],
     //React 语法
-    "react/prop-types": [2],
+    "react/prop-types": [1],
     "react/no-multi-comp": [
-      2,{
+      2, {
         "ignoreStateless": true
       }
     ],
-    "react/prefer-es6-class": [2,"always"],
+    "react/prefer-es6-class": [2, "always"],
     "react/jsx-pascal-case": [2],
-    "jsx-quotes": [2,"prefer-double"],
+    "jsx-quotes": [2, "prefer-double"],
     "react/jsx-curly-spacing": [
-      2,"always",{
+      0, "always", {
         "spacing": {
           "objectLiterals": "never"
         }
@@ -108,7 +109,7 @@
     "react/jsx-boolean-value": [2],
     "react/wrap-multilines": [2],
     "react/self-closing-comp": [
-      2,{
+      2, {
         "component": true,
         "html": false
       }
@@ -118,6 +119,7 @@
   },
   "plugins": [
     "react"
-  ]
-  //  "extends": ["eslint:recommended","plugin:react/recommended"] //开启建议设置
+  ],
+  //开启建议设置
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
 }
