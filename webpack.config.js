@@ -3,7 +3,8 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     'product_entry': ['./public/src/product', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server',],
-    'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',]
+    'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',],
+    'todo': ['./public/src/redux/todos', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',]
   },
   output: {
     path: path.join(__dirname + '/dist/'),
