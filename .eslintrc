@@ -86,20 +86,20 @@
         "allowParens": false
       }
     ],
-    "no-useless-constuctor": [1],
+    "no-useless-constructor": [2],
     "no-duplicate-imports": [2],
     //React 语法
-    "prop-types": [1],
-    "no-mulit-comp": [
-      1,{
+    "react/prop-types": [2],
+    "react/no-multi-comp": [
+      2,{
         "ignoreStateless": true
       }
     ],
-    "prefer-es6-class": [1,"always"],
-    "jsx-pascal-case": [1],
+    "react/prefer-es6-class": [2,"always"],
+    "react/jsx-pascal-case": [2],
     "jsx-quotes": [2,"prefer-double"],
-    "jsx-curly-spacing": [
-      1,"always",{
+    "react/jsx-curly-spacing": [
+      2,"always",{
         "spacing": {
           "objectLiterals": "never"
         }
@@ -107,13 +107,13 @@
     ],
     "react/jsx-boolean-value": [2],
     "react/wrap-multilines": [2],
-    "self-closing-comp": [
-      1,{
+    "react/self-closing-comp": [
+      2,{
         "component": true,
         "html": false
       }
     ],
-    "jsx-no-bind": [1],
+    "react/jsx-no-bind": [2],
     "react/no-is-mounted": [2]
   },
   "plugins": [
