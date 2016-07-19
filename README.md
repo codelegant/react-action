@@ -46,3 +46,13 @@
 
 ## package 包
 - eslint eslint-plugin-react babel-eslint 是代码检查相关的工具，与构建无关。
+
+-----
+``` json
+{
+ "scripts": {
+    "dev": "webpack-dev-server",
+    "deploy": "webpack --progress --profile --colors --display-error-details --display-cached --watch --config webpack.deploy.config.js"
+  }
+}
+```

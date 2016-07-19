@@ -4,7 +4,7 @@
   "description": "react 实践",
   "scripts": {
     "dev": "webpack-dev-server",
-    "deploy": "webpack --progress --profile --colors --display-error-details --display-cached --watch --config webpack.deploy.config.js"
+    "deploy": "webpack --progress --profile --colors --display-error-details --watch --config webpack.deploy.config.js"
   },
   "repository": {
     "type": "git",
