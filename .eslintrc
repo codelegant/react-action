@@ -14,7 +14,9 @@
     "amd": true,
     "es6": true
   },
-  "globals": {},
+  "globals": {
+    "fetch": true
+  },
   "rules": {
     "semi": [2, "always"],
     "comma-dangle": [2, "never"],
