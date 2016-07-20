@@ -12,6 +12,7 @@ module.exports = {
     filename: '[name].js',
     publicPath: '/assets/'
   },
+  devtool:'eval',
   module: {
     loaders: [
       {

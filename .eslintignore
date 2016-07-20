@@ -18,3 +18,5 @@ jspm_packages
 /public/bundle.js
 /webpack.config.js
 /webpack.deploy.config.js
+/react/*.js
+/react/
