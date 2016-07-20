@@ -7,8 +7,10 @@ var path = require('path');
 var webpack = require("webpack");
 module.exports = {
   entry: {
-    'product_entry': './public/src/product',
-    'demo': './public/src/demo',
+    'product': './public/src/product',
+    // 'demo'         : './public/src/demo',
+    'es5': './public/src/es5',
+    // 'vendors': ['react', 'react-dom']
   },
   output: {
     path: path.join(__dirname + '/dist/'),
@@ -29,7 +31,16 @@ module.exports = {
         test: /\.css$/,
         loader: 'style!css'// right-to-left and the loader are separated by '!'. Short for style-loader!css-loader
       }
-    ]
+    ],
+    // noParse:["react"]
+  },
+  externals: {
+    "react": 'React',
+    "react-dom": "ReactDOM",
+    "react-router": "ReactRouter",
+    'history': "History",
+    'redux': 'Redux',
+    'react-redux': 'ReactRedux'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -38,8 +49,16 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false}
-    })
+      compress: { warnings: false }
+    }),
+    // new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.min.js'),
+    // new webpack.IgnorePlugin(/react/,/react-dom/)
+    // new webpack.ProvidePlugin({
+    //   React: "React",
+    //   react: "React",
+    //   "window.react": "React",
+    //   "window.React": "React"
+    // })
   ],
 
 };
