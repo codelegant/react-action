@@ -21,7 +21,7 @@ module.exports = {
     resolve: {
       alias: {
         // 'react$': path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.js'),
-        'react': path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.js'),
+        // 'react': path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.js'),
         // 'react-dom': path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.min.js'),
         // 'react': 'react/addons',
         // 'react/lib': 'react',
@@ -79,11 +79,11 @@ module.exports = {
     // }),
     // new webpack.IgnorePlugin(/react/,/react-dom/)
     /*不用在文件中显示引入 react react-dom */
-    new webpack.ProvidePlugin({
-      "React": "react",
-      "ReactDOM": "react-dom",
-      // "window.React": "React",
-    })
+    // new webpack.ProvidePlugin({
+    //   "React": "react",
+    //   "ReactDOM": "react-dom",
+    //   "window.React": "React",
+    // })
   ],
 
 };
