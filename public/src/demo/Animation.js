@@ -6,6 +6,8 @@
  */
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+// const ReactCSSTransitionGroup=React.addons.CSSTransitionGroup;
+
 
 export class TodoList extends React.Component {
   constructor() {

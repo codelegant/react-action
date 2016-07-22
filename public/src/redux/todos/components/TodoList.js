@@ -19,9 +19,9 @@ const TodoList = props=>(
 );
 TodoList.propTypes = {
   onTodoClick: PropTypes.func.isRequired,
-  todos      : PropTypes.arrayOf(React.PropTypes.shape({
-    id       : PropTypes.number.isRequired,
-    text     : PropTypes.string.isRequired,
+  todos: PropTypes.arrayOf(React.PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
     completed: PropTypes.bool.isRequired
   }).isRequired).isRequired
 };

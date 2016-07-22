@@ -3,9 +3,9 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     // 'product_entry': ['./public/src/product', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server',],
-    // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',],
-    // 'todo': ['./public/src/redux/todos', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',],
-    'fetch': ['./public/src/whatwg_fetch/fetch', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',]
+    'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',],
+    // 'todo': ['./public/src/redux/todos', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
+    // 'fetch': ['./public/src/whatwg_fetch/fetch', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',]
   },
   output: {
     path: path.join(__dirname + '/dist/'),
@@ -41,7 +41,7 @@ module.exports = {
     hot: true,
     historyApiFallback: true,
     host: 'localhost',
-    port: 3000,
+    port: 4000,
     stats: {colors: true},
     headers: {'Access-Control-Allow-Origin': '*'}
   }
