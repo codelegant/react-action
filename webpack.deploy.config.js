@@ -8,8 +8,8 @@ var webpack = require("webpack");
 module.exports = {
   entry: {
     // 'product': './public/src/product',
-    // 'demo'         : './public/src/demo',
-    'es5': './public/src/es5',
+    'demo'         : './public/src/demo',
+    // 'es5': './public/src/es5',
     // 'vendors': ['react', 'react-dom']
   },
   output: {
@@ -57,21 +57,22 @@ module.exports = {
   target: "web",
   externals: {
     "react": 'React',
-    "react-dom": "ReactDOM"
+    "react-dom": "ReactDOM",
+    // 'react-addons-css-transition-group':'ReactCSSTransitionGroup'
     // "react-router": "ReactRouter",
     // 'history': "History",
     // 'redux': 'Redux',
     // 'react-redux': 'ReactRedux'
   },
   plugins: [
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     NODE_ENV: JSON.stringify('production')// production | true
-    //   }
-    // }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: {warnings: false}
-    // }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')// production | true
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {warnings: false}
+    }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: "vendors",
     //   filename: "vendors.min.js",
