@@ -9,7 +9,8 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     // 'product': './public/src/product',
-    'demo'         : './public/src/demo',
+    // 'demo'         : './public/src/demo',
+    'animation':'./public/src/animation'
     // 'es5': './public/src/es5',
     // 'vendors': ['react', 'react-dom']
   },
