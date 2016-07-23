@@ -9,15 +9,27 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
     // 'product': './public/src/product',
-    // 'demo'         : './public/src/demo',
-    'es5': './public/src/es5',
+    'demo'         : './public/src/demo',
+    // 'es5': './public/src/es5',
     // 'vendors': ['react', 'react-dom']
   },
   output: {
     path: path.join(__dirname + '/dist/'),
-    filename: '[name].min.js'//[name].js
+    filename: '[name].min.js',//[name].js
+    libraryTarget: "var"
   },
   module: {
+    resolve: {
+      alias: {
+        // 'react$': path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.js'),
+        // 'react': path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.js'),
+        // 'react-dom': path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.min.js'),
+        // 'react': 'react/addons',
+        // 'react/lib': 'react',
+        // 'react/dist': 'react'
+
+      }
+    },
     loaders: [
       {
         test: /\.jsx?$/,
@@ -34,30 +46,45 @@ module.exports = {
       }
     ],
     // noParse:["react"]
+    noParse: [
+      // path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.js'),
+      // path.resolve(__dirname, 'node_modules/react/dist/react-with-addons.min.js'),
+      // path.resolve(__dirname, 'node_modules/react/dist/react.js'),
+      // path.resolve(__dirname, 'node_modules/react/dist/react.min.js'),
+      // path.resolve(__dirname, 'node_modules/react-dom/dist/react-dom.min.js'),
+      // path.resolve(__dirname, 'node_modules/react-dom/dist/react-dom.js')
+    ]
   },
+  target: "web",
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
-    // 'react-router': 'ReactRouter',
+    "react": 'React',
+    "react-dom": "ReactDOM",
+    // 'react-addons-css-transition-group':'ReactCSSTransitionGroup'
+    // "react-router": "ReactRouter",
+    // 'history': "History",
     // 'redux': 'Redux',
     // 'react-redux': 'ReactRedux'
   },
   plugins: [
-    // new webpack.DefinePlugin({
-    //   'process.env': {
-    //     NODE_ENV: JSON.stringify('production')// production | true
-    //   }
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')// production | true
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {warnings: false}
+    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: "vendors",
+    //   filename: "vendors.min.js",
+    //   minChunks: Infinity
     // }),
-    // new webpack.optimize.UglifyJsPlugin({
-    //   compress: { warnings: false }
-    // })
-    // new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.min.js'),
-    // new webpack.IgnorePlugin(/react/)
+    // new webpack.IgnorePlugin(/react/,/react-dom/)
+    /*不用在文件中显示引入 react react-dom */
     // new webpack.ProvidePlugin({
-    //   React: 'React',
-    //   react: 'React',
-    //   'window.react': 'React',
-    //   'window.React': 'React'
+    //   "React": "react",
+    //   "ReactDOM": "react-dom",
+    //   "window.React": "React",
     // })
   ],
 

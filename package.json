@@ -4,7 +4,8 @@
   "description": "react 实践",
   "scripts": {
     "dev": "webpack-dev-server",
-    "deploy": "webpack --progress --profile --colors --display-error-details --watch --config webpack.deploy.config.js"
+    "deploy": "webpack --progress --profile --colors --display-error-details --display-cached --watch --config webpack.deploy.config.js",
+    "profile": "webpack --progress --profile --json > profile.json"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,8 @@
     "react-addons-css-transition-group": "^15.2.0",
     "react-dom": "^15.2.0",
     "react-redux": "^4.4.5",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "whatwg-fetch": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",

@@ -5,7 +5,9 @@
  * Date: 2016/7/17
  */
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';//工作正常
+// const ReactCSSTransitionGroup=React.addons.CSSTransitionGroup;//工作不正常
+
 
 export class TodoList extends React.Component {
   constructor() {

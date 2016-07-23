@@ -2,15 +2,16 @@ var path = require('path');
 var webpack = require('webpack');
 module.exports = {
   entry: {
-    'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/only-dev-server',],
-    // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',],
-    // 'todo': ['./public/src/redux/todos', 'webpack-dev-server/client?http://localhost:3000', 'webpack/hot/dev-server',]
+    'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
+    // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
+    // 'todo': ['./public/src/redux/todos', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
+    // 'fetch': ['./public/src/whatwg_fetch/fetch', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',]
   },
   output: {
-    path: path.join(__dirname + '/dist/'),
     filename: '[name].js',
-    publicPath: '/assets/'
+    publicPath: '/'
   },
+  devtool:'eval',
   module: {
     loaders: [
       {
@@ -35,11 +36,11 @@ module.exports = {
   ],
   devServer: {
     contentBase: './view/',//where index.html is
-    publicPath: '/assets/',//虚拟目录，脚本所在文件夹，与output.publicPath一致，与页面使用一致
+    publicPath: '/',//虚拟目录，脚本所在文件夹，与output.publicPath一致，与页面使用一致
     hot: true,
     historyApiFallback: true,
     host: 'localhost',
-    port: 3000,
+    port: 4000,
     stats: {colors: true},
     headers: {'Access-Control-Allow-Origin': '*'}
   }
