@@ -4,10 +4,11 @@
  * DateTime: 2016/7/15 16:40
  */
 var path = require('path');
-var webpack = require("webpack");
+var webpack = require('webpack');
+// var pkg=require('./package.json');
 module.exports = {
   entry: {
-    'product': './public/src/product',
+    // 'product': './public/src/product',
     // 'demo'         : './public/src/demo',
     'es5': './public/src/es5',
     // 'vendors': ['react', 'react-dom']
@@ -23,7 +24,7 @@ module.exports = {
         loader: 'babel',// short for babel-loader
         exclude: /node_modules/,
         query: {
-          presets: ["react", "es2015", "stage-0"]
+          presets: ['react', "es2015", "stage-0"]
         }
 
       },
@@ -35,29 +36,28 @@ module.exports = {
     // noParse:["react"]
   },
   externals: {
-    "react": 'React',
-    "react-dom": "ReactDOM",
-    "react-router": "ReactRouter",
-    'history': "History",
-    'redux': 'Redux',
-    'react-redux': 'ReactRedux'
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    // 'react-router': 'ReactRouter',
+    // 'redux': 'Redux',
+    // 'react-redux': 'ReactRedux'
   },
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify('production')// production | true
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: JSON.stringify('production')// production | true
+    //   }
+    // }),
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: { warnings: false }
+    // })
     // new webpack.optimize.CommonsChunkPlugin('vendors', 'vendors.min.js'),
-    // new webpack.IgnorePlugin(/react/,/react-dom/)
+    // new webpack.IgnorePlugin(/react/)
     // new webpack.ProvidePlugin({
-    //   React: "React",
-    //   react: "React",
-    //   "window.react": "React",
-    //   "window.React": "React"
+    //   React: 'React',
+    //   react: 'React',
+    //   'window.react': 'React',
+    //   'window.React': 'React'
     // })
   ],
 
