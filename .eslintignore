@@ -20,3 +20,4 @@ jspm_packages
 /webpack.deploy.config.js
 /react/*.js
 /react/
+/vendor/

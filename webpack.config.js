@@ -5,8 +5,8 @@ module.exports = {
     // 'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'animation': ['./public/src/animation', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
-    'todo': ['./public/src/redux/todos/index', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
-    // 'fetch': ['./public/src/whatwg_fetch/fetch', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',]
+    // 'todo': ['./public/src/redux/todos/index', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
+    'fetch': ['./public/src/fetch/fetch', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',]
   },
   output: {
     filename: '[name].js',

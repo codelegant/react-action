@@ -10,9 +10,9 @@ module.exports = {
   entry: {
     // 'product': './public/src/product',
     // 'demo'         : './public/src/demo',
-    'animation':'./public/src/animation'
+    // 'animation':'./public/src/animation',
+    'fetch': './public/src/fetch/fetch',
     // 'es5': './public/src/es5',
-    // 'vendors': ['react', 'react-dom']
   },
   output: {
     path: path.join(__dirname + '/dist/'),
@@ -73,7 +73,7 @@ module.exports = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false}
+      compress: { warnings: false }
     }),
     // new webpack.optimize.CommonsChunkPlugin({
     //   name: "vendors",
