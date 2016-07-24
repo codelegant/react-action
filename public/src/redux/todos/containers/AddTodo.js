@@ -12,17 +12,19 @@ import { addTodo } from '../actions/index';
 let AddTodo = ({ dispatch })=> {
   let input = undefined;
   const submitHandler = e=> {
-    e.preventDefault();
     if (! input.value.trim()) {
       return;
     }
     dispatch(addTodo(input.value));
     input.value = '';
+    e.preventDefault();
   };
   return (
       <div>
         <form onSubmit={e=>submitHandler(e)} >
-          <input ref={node=>input = node} />
+          <input ref={node=> {
+            input = node
+          }} />
           <button type="submit" >Add Todo</button>
         </form>
       </div>

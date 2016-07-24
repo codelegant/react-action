@@ -6,9 +6,9 @@
  */
 import React from 'react';
 //开发环境写法
-// import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 //生产环境写法
-const ReactCSSTransitionGroup=React.addons.CSSTransitionGroup;
+// const ReactCSSTransitionGroup=React.addons.CSSTransitionGroup;
 
 
 export default class TodoList extends React.Component {
@@ -16,8 +16,8 @@ export default class TodoList extends React.Component {
     super();
     this.state = { items: ['hello', 'world', 'click', 'me'] };
     this.handleAdd = this.handleAdd.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
-  }
+    this.handleRemove = this.handleRemove.bind(this)
+  };
 
   handleAdd() {
     const newItems = this.state.items.concat([prompt('Enter some text')]);
@@ -31,9 +31,16 @@ export default class TodoList extends React.Component {
   }
 
   render() {
+    /**
+     * 绑定事件处理器的三种方式
+     * ()=>this.handleRemove(i)
+     * (i)=>this.handleRemove(i)
+     * this.handleRemove.bind(i)//推荐做法
+     * @type {Array}
+     */
     const items = this.state.items.map((item, i)=>(
         <li key={item}
-             onClick={this.handleRemove.bind(this, i)} >
+             onClick={this.handleRemove.bind(i)} >
           {item}
         </li>
     ));

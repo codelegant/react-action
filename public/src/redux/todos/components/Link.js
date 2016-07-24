@@ -5,7 +5,7 @@
  * Date: 2016/7/18
  */
 import React from 'react';
-const PropTypes = React.Component;
+const PropTypes = React.PropTypes;
 const Link = props=> {
   if (props.active) {
     return <span>{props.children}</span>;
