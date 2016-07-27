@@ -2,11 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 module.exports = {
   entry: {
-    // 'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
+    'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'animation': ['./public/src/animation', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
     // 'todo': ['./public/src/redux/todos/index', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
-    'fetch': ['./public/src/fetch/fetch', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',]
+    // 'fetch': ['./public/src/fetch/fetch', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',]
   },
   output: {
     filename: '[name].js',
@@ -33,10 +33,14 @@ module.exports = {
         // NODE_ENV: 'development'// production | true
       }
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      React: 'react',
+      ReactDOM: 'react-dom'
+    })
   ],
   devServer: {
-    contentBase: './view/',//where index.html is
+    contentBase: './',//where index.html is
     publicPath: '/',//虚拟目录，脚本所在文件夹，与output.publicPath一致，与页面使用一致
     hot: true,
     historyApiFallback: true,
