@@ -8,9 +8,9 @@ var webpack = require('webpack');
 // var pkg=require('./package.json');
 module.exports = {
   entry: {
-    'product': './public/src/product',
+    // 'product': './public/src/product',
     // 'demo'         : './public/src/demo',
-    // 'animation':'./public/src/animation',
+    'animation':'./public/src/animation',
     // 'fetch': './public/src/fetch/fetch',
     // 'es5': './public/src/es5',
   },
@@ -81,11 +81,6 @@ module.exports = {
     //   minChunks: Infinity
     // }),
     // new webpack.IgnorePlugin(/react/,/react-dom/)
-    /*不用在文件中显示引入 react react-dom */
-    new webpack.ProvidePlugin({
-      React: 'react',
-      ReactDOM: 'react-dom'
-    })
   ],
 
 };
