@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+// console.log(process.env.src); //CLI  set src="http://locahost:8004"
 module.exports = {
   entry: {
     'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
@@ -16,15 +17,19 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
-        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015,presets[]=stage-0'],// short for babel-loader
+        test: /\.js?$/,
+        loaders: ['react-hot', 'babel?presets[]=react,presets[]=es2015'],// short for babel-loader
         exclude: /node_modules/
       },
       {
         test: /\.css$/,
         loader: 'style!css'// right-to-left and the loader are separated by '!'. Short for style-loader!css-loader
+      },
+      {
+        test:/\.js?$/,
+        loader:'imports?imgSrc=>"http://locahost:8004"'
       }
-    ]
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
