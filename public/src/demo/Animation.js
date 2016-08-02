@@ -16,8 +16,8 @@ export default class TodoList extends React.Component {
     super();
     this.state = { items: ['hello', 'world', 'click', 'me'] };
     this.handleAdd = this.handleAdd.bind(this);
-    this.handleRemove = this.handleRemove.bind(this)
-  };
+    this.handleRemove = this.handleRemove.bind(this);
+  }
 
   handleAdd() {
     const newItems = this.state.items.concat([prompt('Enter some text')]);
@@ -40,13 +40,13 @@ export default class TodoList extends React.Component {
      */
     const items = this.state.items.map((item, i)=>(
         <li key={item}
-             onClick={this.handleRemove.bind(i)} >
+             onClick={i=>this.handleRemove(i)} >
           {item}
         </li>
     ));
     return (
         <div>
-          <button onClick={this.handleAdd} >Add Item</button>
+          <button onClick={this.handleAdd}>Add Item</button>
           <ReactCSSTransitionGroup
               component="ul"
               transitionName="example"
