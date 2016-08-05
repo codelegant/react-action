@@ -47,7 +47,6 @@
 
 ## package 包
 - eslint eslint-plugin-react babel-eslint 是代码检查相关的工具，与构建无关。
-
 - `whatwg-fetch`与`es6-promise`主要是为了支持 IE，虽然可以页面引入，但是与业务逻辑一起编译较为划算，二者加起来只增加了 
 14K 的体积。如果页面引入，光`promise.min.js`就有 18K。
 -----
