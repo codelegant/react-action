@@ -5,7 +5,7 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, Link, hashHistory,browserHistory, Redirect, withRouter } from 'react-router';
+import { Router, Route, IndexRoute, Link, IndexLink, browserHistory, Redirect, withRouter } from 'react-router';
 
 const About = ()=><h2>About</h2>;
 
@@ -13,7 +13,7 @@ const Inbox = props=>(
   <div>
     <h2>Inbox</h2>
     <ul>
-      <li><Link to="/messages/110?name=laichuanfeng">Message</Link></li>
+      <li><Link to="/view/messages/110?name=laichuanfeng">Message</Link></li>
     </ul>
     {props.children || 'Welcome to your Inbox'}
   </div>
@@ -26,6 +26,7 @@ const App = props=>(
   <div>
     <h1>App</h1>
     <ul>
+      <li><IndexLink to="/view/app.html">Home</IndexLink></li>
       <li><Link to="/view/about">About</Link></li>
       <li><Link to="/view/inbox">Inbox</Link></li>
       <li><Link to="/view/page">Page</Link></li>
@@ -35,7 +36,7 @@ const App = props=>(
 );
 
 class Page extends React.Component {
-  componentDidMout() {
+  componentDidMount() {
     console.log('You have unsaved information, are you sure you want to leave this page?');
   }
 

@@ -17,6 +17,4 @@ jspm_packages
 .node_repl_history
 /public/bundle.js
 /*.config.js
-/react/*.js
-/react/
 /vendor/

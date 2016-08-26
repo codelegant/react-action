@@ -39,6 +39,15 @@ module.exports = {
     ],
   },
   target : 'web',
+  externals: {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    // 'react-addons-css-transition-group':'ReactCSSTransitionGroup'
+    // "react-router": "ReactRouter",
+    // 'history': "History",
+    // 'redux': 'Redux',
+    // 'react-redux': 'ReactRedux'
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
@@ -51,7 +60,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title      : 'Html Webpack Plugin',
-      template   : './view/init.html',
+      template   : './view/pub.init.html',
       keywords   : 'htmlwebpackplugin',
       description: 'this is a webpack plugin',
       inject     : 'body',

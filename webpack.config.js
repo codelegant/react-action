@@ -42,7 +42,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title      : 'Html Webpack Plugin',
-      template   : './view/init.html',
+      template   : './view/dev.init.html',
       keywords   : 'htmlwebpackplugin',
       description: 'this is a webpack plugin',
       inject     : 'body',
