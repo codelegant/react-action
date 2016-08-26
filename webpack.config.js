@@ -1,9 +1,11 @@
 var path = require('path');
 var webpack = require('webpack');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 // console.log(process.env.src); //CLI  set src="http://locahost:8004"
 module.exports = {
   entry: {
-    'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
+    'app': ['./public/src/router/App', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
+    // 'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'animation': ['./public/src/animation', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
     // 'todo': ['./public/src/redux/todos/index', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
@@ -38,6 +40,21 @@ module.exports = {
         // NODE_ENV: 'development'// production | true
       }
     }),
+    new HtmlWebpackPlugin({
+      title      : 'Html Webpack Plugin',
+      template   : './view/init.html',
+      keywords   : 'htmlwebpackplugin',
+      description: 'this is a webpack plugin',
+      inject     : 'body',
+      filename   : '../view/app.html',
+      minify     : {
+        minifyCSS         : true,
+        minifyJS          : true,
+        collapseWhitespace: false
+      },
+      xhtml      : true,
+      hash       : false
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.ProvidePlugin({
       React: 'react',
@@ -52,6 +69,18 @@ module.exports = {
     host: 'localhost',
     port: 4000,
     stats: {colors: true},
-    headers: {'Access-Control-Allow-Origin': '*'}
+    headers: {'Access-Control-Allow-Origin': '*'},
+    proxy: {
+      '/view/*': {
+        target: 'http://localhost:4000/',
+        secure: false,
+        bypass: function (req, res, proxyOptions) {
+          if (req.headers.accept.indexOf('html') !== -1) {
+          //如果是 /view/* 是404，就转到 /view/app.html
+            return '/view/app.html';
+          }
+        }
+      }
+    }
   }
 };

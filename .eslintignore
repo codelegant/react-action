@@ -16,8 +16,7 @@ jspm_packages
 .npm
 .node_repl_history
 /public/bundle.js
-/webpack.config.js
-/webpack.deploy.config.js
+/*.config.js
 /react/*.js
 /react/
 /vendor/

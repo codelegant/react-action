@@ -8,19 +8,20 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 // var pkg=require('./package.json');
 module.exports = {
-  entry    : {
-    'product': './public/src/product',
+  entry  : {
+    'app': './public/src/router/App'
+    // 'product': './public/src/product',
     // 'demo'         : './public/src/demo',
     // 'animation': './public/src/animation',
     // 'fetch': './public/src/fetch/fetch',
     // 'es5': './public/src/es5',
   },
-  output   : {
+  output : {
     path         : path.join(__dirname + '/dist/'),
     filename     : '[name].min.js',//[name].js
     libraryTarget: "var"
   },
-  module   : {
+  module : {
     loaders: [
       {
         test   : /\.js?$/,
@@ -37,23 +38,16 @@ module.exports = {
       }
     ],
   },
-  target   : "web",
-  externals: {
-    'react'    : 'React',
-    'react-dom': 'ReactDOM',
-    // "react-router": "ReactRouter",
-    // 'history': "History",
-    // 'redux': 'Redux',
-    // 'react-redux': 'ReactRedux'
-  },
-  plugins  : [
+  target : 'web',
+  plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')// production | true
       }
     }),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false}
+      compress: {warnings: false},
+      output  : {comments: false}
     }),
     new HtmlWebpackPlugin({
       title      : 'Html Webpack Plugin',
@@ -61,14 +55,14 @@ module.exports = {
       keywords   : 'htmlwebpackplugin',
       description: 'this is a webpack plugin',
       inject     : 'body',
-      filename   : '../view/index.html',
+      filename   : '../view/app.html',
       minify     : {
-        htmls         : true,
-        minifyCSS     : true,
-        minifyJS      : true,
-        collapseWhitespace:true
+        minifyCSS         : true,
+        minifyJS          : true,
+        collapseWhitespace: false
       },
-      hash       : true
+      xhtml      : true,
+      hash       : false
     })
   ],
 
