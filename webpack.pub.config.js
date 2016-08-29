@@ -40,8 +40,8 @@ module.exports = {
   },
   target : 'web',
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM',
+    // 'react': 'React',
+    // 'react-dom': 'ReactDOM',
     // 'react-addons-css-transition-group':'ReactCSSTransitionGroup'
     // "react-router": "ReactRouter",
     // 'history': "History",

@@ -6,9 +6,10 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, IndexRoute, Link, IndexLink, browserHistory, Redirect, withRouter } from 'react-router';
+import useBasename from 'history/lib/useBasename';
 
 const About = ()=><h2>About</h2>;
-
+const withExampleBasename = history => useBasename(() => history)({basename: `/view`});
 const Inbox = props=>(
   <div>
     <h2>Inbox</h2>
@@ -26,10 +27,10 @@ const App = props=>(
   <div>
     <h1>App</h1>
     <ul>
-      <li><IndexLink to="/view/app.html">Home</IndexLink></li>
-      <li><Link to="/view/about">About</Link></li>
-      <li><Link to="/view/inbox">Inbox</Link></li>
-      <li><Link to="/view/page">Page</Link></li>
+      <li><IndexLink to="/app.html">Home</IndexLink></li>
+      <li><Link to="/about">About</Link></li>
+      <li><Link to="/inbox">Inbox</Link></li>
+      <li><Link to="/page">Page</Link></li>
     </ul>
     {props.children}
   </div>
@@ -48,21 +49,21 @@ class Page extends React.Component {
 const RouterPage = withRouter(Page);
 
 render((
-  <Router history={browserHistory}>
-    <Route path="/view/app.html"
+  <Router history={withExampleBasename(browserHistory)}>
+    <Route path="/app.html"
            component={App}>
       <IndexRoute component={Dashboard} />
-      <Route path="/view/about"
+      <Route path="/about"
              component={About} />
-      <Route path="/view/page"
+      <Route path="/page"
              component={RouterPage} />
-      <Route path="/view/inbox"
+      <Route path="/inbox"
              component={Inbox}>
-        <Redirect from="/view/inbox/messages/:id"
-                  to="/view/messages/:id" />
+        <Redirect from="/inbox/messages/:id"
+                  to="/messages/:id" />
       </Route>
       <Route component={Inbox}>
-        <Route path="/view/messages/:id"
+        <Route path="/messages/:id"
                component={Message} />
       </Route>
     </Route>
