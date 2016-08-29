@@ -18,3 +18,4 @@ jspm_packages
 /public/bundle.js
 /*.config.js
 /vendor/
+__tests__/
