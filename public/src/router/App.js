@@ -5,7 +5,14 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, IndexRoute, Link, IndexLink, browserHistory, Redirect, withRouter } from 'react-router';
+import Router from 'react-router/lib/Router';
+import Route from 'react-router/lib/Route';
+import IndexRoute from 'react-router/lib/IndexRoute';
+import Link from 'react-router/lib/Link';
+import IndexLink from 'react-router/lib/IndexLink';
+import browserHistory from 'react-router/lib/browserHistory';
+import Redirect from 'react-router/lib/Redirect';
+import withRouter from 'react-router/lib/withRouter';
 import useBasename from 'history/lib/useBasename';
 
 const About = ()=><h2>About</h2>;
