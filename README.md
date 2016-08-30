@@ -7,28 +7,28 @@
   output: {
     path: path.join(__dirname + '/public/'),
     filename: 'bundle.js',
-    publicPath: '/assets/'
+    publicPath: '/'
   },
   devServer: {
-    publicPath: '/assets/'
+    publicPath: '/'
   }
 ```
 ``` html
 <!--index.html-->
 <body>
   <div id="container"></div>
-  <script src="./assets/bundle.js"></script>
+  <script src="/bundle.js"></script>
 </body>
 ```
 - `entry`中的服务器路径与`devServer`的配置相对应
 ``` javascript
 //webpack.config.js
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    'webpack-dev-server/client?http://localhost:4000',
   ],
   devServer: {
     host: 'localhost',
-    port: 3000,
+    port: 4000,
   }
 ```
 - `only-dev-server`与`dev-server`的区别
