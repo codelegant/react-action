@@ -9,7 +9,8 @@
     "profile": "webpack --progress --profile --json > profile.json"
   },
   "jest": {
-    "automock": false
+    "automock": false,
+    "notify": false
   },
   "repository": {
     "type": "git",
