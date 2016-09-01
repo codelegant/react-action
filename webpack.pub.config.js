@@ -51,6 +51,8 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')// production | true
       }
     }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {warnings: false},
       output  : {comments: false}
