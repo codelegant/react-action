@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%=htmlWebpackPlugin.options.title %></title>
+  <meta name="keywords"
+        content="<%=htmlWebpackPlugin.options.keywords %>" />
+  <meta name="description"
+        content="<%=htmlWebpackPlugin.options.description %>" />
+  <meta name="viewport"
+        content="width=1200" />
+  <meta name="renderer"
+        content="webkit" />
+  <meta http-equiv="X-UA-Compatible"
+        content="IE=edge" />
+  <script>window._INITIAL_STATE_ = <%=htmlWebpackPlugin.options.initialState%></script>
+</head>
+<body>
+<div id="container">
+  <%=htmlWebpackPlugin.options.body%>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/react/15.3.0/react.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/react/15.3.0/react-dom.min.js"></script>
+</body>
+</html>
