@@ -50,7 +50,9 @@ module.exports = {
       minify     : {
         minifyCSS         : true,
         minifyJS          : true,
-        collapseWhitespace: false
+        collapseWhitespace: false,
+        sortAttributes    : true,
+        sortClassName     : true
       },
       xhtml      : true,
       hash       : false

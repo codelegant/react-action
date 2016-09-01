@@ -8,7 +8,7 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 // var pkg=require('./package.json');
 module.exports = {
-  entry  : {
+  entry    : {
     'app': './public/src/router/App'
     // 'product': './public/src/product',
     // 'demo'         : './public/src/demo',
@@ -16,12 +16,12 @@ module.exports = {
     // 'fetch': './public/src/fetch/fetch',
     // 'es5': './public/src/es5',
   },
-  output : {
+  output   : {
     path         : path.join(__dirname + '/dist/'),
     filename     : '[name].min.js',//[name].js
     libraryTarget: "var"
   },
-  module : {
+  module   : {
     loaders: [
       {
         test   : /\.js?$/,
@@ -35,7 +35,7 @@ module.exports = {
       }
     ],
   },
-  target : 'web',
+  target   : 'web',
   externals: {
     // 'react': 'React',
     // 'react-dom': 'ReactDOM',
@@ -45,7 +45,7 @@ module.exports = {
     // 'redux': 'Redux',
     // 'react-redux': 'ReactRedux'
   },
-  plugins: [
+  plugins  : [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')// production | true
@@ -67,7 +67,9 @@ module.exports = {
       minify     : {
         minifyCSS         : true,
         minifyJS          : true,
-        collapseWhitespace: false
+        collapseWhitespace: true,
+        sortAttributes    : true,
+        sortClassName     : true
       },
       xhtml      : true,
       hash       : false
