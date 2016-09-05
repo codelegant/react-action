@@ -43,6 +43,7 @@
 ## webpack 构建
 - 开发调试的构建使用 `npm run dev`，生产环境的构建使用`npm run pub`
 - 性能分析文件生成使用`npm run profile`，在根目录找到`profile.json`，并上传到[http://alexkuz.github.io/webpack-chart/](http://alexkuz.github.io/webpack-chart/)
+- 预渲染组件并生成静态文件`npm run server`
 
 
 ## package 包
