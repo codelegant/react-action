@@ -14,8 +14,6 @@ const LinkButton = require('./public/src/server-render/LinkButton');
 const state = {liked: false};
 const linkButton = React.createFactory(LinkButton);//工厂方法，将类转换为函数(React Element)
 const reactString = ReactDOMServer.renderToStaticMarkup(linkButton(state));//渲染成字符串
-console.log(JSON.stringify(state));
-// var pkg=require('./package.json');
 module.exports = {
   entry    : {
     'bundle': './public/src/server-render/browser'

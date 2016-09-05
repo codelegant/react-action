@@ -7,7 +7,6 @@ import '../css/product.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Component from './demo/SpreadAttributes';
-import LikeButton from './demo/LinkButton';
 import Avatar from './demo/Avatar';
 import CustomOl from './demo/MulitipleComponents';
 import { PropValid, TransferProp } from './demo/ReusableComponents';
@@ -28,8 +27,6 @@ props.foo = 'lai';
 props.bar = 'chuanfeng';
 
 ReactDOM.render(<Component {...props} foo={'override'} />, getById('div_1'));
-
-ReactDOM.render(<LikeButton/>, getById('div_2'));
 
 /*ReactDOM.render(<Avatar username="laichuanfeng@hotmail.com"/>, getById()('div_3'));*/
 

@@ -21,7 +21,7 @@ const Inbox = props=>(
   <div>
     <h2>Inbox</h2>
     <ul>
-      <li><Link to="/view/messages/110?name=laichuanfeng">Message</Link></li>
+      <li><Link to="/messages/110?name=laichuanfeng">Message</Link></li>
     </ul>
     {props.children || 'Welcome to your Inbox'}
   </div>
