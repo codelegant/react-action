@@ -19,6 +19,6 @@ describe('<LinkButton/>',()=>{
     
     snapshot.props.onClick();
     snapshot=component.toJSON();
-    expect(snapshot).toMatchSnapshot
+    expect(snapshot).toMatchSnapshot()
   });
 });
