@@ -6,19 +6,19 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import LinkButton from '../LinkButton';
-describe('<LinkButton/>',()=>{
-  it('Snapshot',()=>{
+describe('<LinkButton/>', () => {
+  it('Snapshot', () => {
     const component = renderer.create(<LinkButton/>);
 
-    let snapshot=component.toJSON();
+    let snapshot = component.toJSON();
     expect(snapshot).toMatchSnapshot();
 
     snapshot.props.onClick();
-    snapshot=component.toJSON();
+    snapshot = component.toJSON();
     expect(snapshot).toMatchSnapshot();
-    
+
     snapshot.props.onClick();
-    snapshot=component.toJSON();
+    snapshot = component.toJSON();
     expect(snapshot).toMatchSnapshot()
   });
 });
