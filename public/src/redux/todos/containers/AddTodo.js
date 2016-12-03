@@ -9,9 +9,9 @@ import { connect } from 'react-redux';
 import { addTodo } from '../actions/index';
 
 //TODO:为什么是传入 {dispatch}
-let AddTodo = ({ dispatch })=> {
+let AddTodo = ({ dispatch }) => {
   let input = undefined;
-  const submitHandler = e=> {
+  const submitHandler = e => {
     if (! input.value.trim()) {
       return;
     }
@@ -20,14 +20,12 @@ let AddTodo = ({ dispatch })=> {
     e.preventDefault();
   };
   return (
-      <div>
-        <form onSubmit={e=>submitHandler(e)} >
-          <input ref={node=> {
-            input = node
-          }} />
-          <button type="submit" >Add Todo</button>
-        </form>
-      </div>
+    <div>
+      <form onSubmit={e => submitHandler(e)}>
+        <input ref={node => input = node}/>
+        <button type="submit">Add Todo</button>
+      </form>
+    </div>
   );
 };
 
