@@ -5,8 +5,8 @@
  * Date: 2016/7/18
  */
 import {
-    ADD_TODO,
-    TOGGLE_TODO
+  ADD_TODO,
+  TOGGLE_TODO
 } from '../actions/index';
 
 /**
@@ -15,7 +15,7 @@ import {
  * @param action
  * @returns Object
  */
-const todos = (state = [], action)=> {
+const todos = (state = [], action) => {
   switch (action.type) {
     case ADD_TODO:
       return [
@@ -27,12 +27,12 @@ const todos = (state = [], action)=> {
         }
       ];
     case TOGGLE_TODO:
-      //TODO：不使用三个 return 如何达到目的？
-      return state.map(todo=> {
+      return state.map(todo => {
         if (todo.id === action.id) {
-          return Object.assign({}, todo, {
+          return {
+            ...todo,
             completed: ! todo.completed
-          });
+          };
         }
         return todo;
       });

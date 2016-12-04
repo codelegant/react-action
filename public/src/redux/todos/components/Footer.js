@@ -8,7 +8,7 @@ import FilterLink from '../containers/FilterLink';
 import { todoFilters } from '../actions/index';
 
 const Footer=()=>(
-  <p>
+  <p ref={()=>console.log('Footer')}>
     Show:
     {" "}
     <FilterLink filter={todoFilters.SHOW_ALL}>

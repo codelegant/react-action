@@ -19,28 +19,7 @@
     }
   };
 
-  const createStore = function createStore(reducer) {
-    let state;
-    let listeners = [];
-
-    const getState = function getState() {
-      return state;
-    };
-
-    const dispatch = function dispatch(action) {
-      state = reducer(state, action);
-      listeners.forEach(listener => listener());
-    };
-
-    const subscribe = function subscribe(listener) {
-      listeners.push(listener);
-      return () => listeners.filter(l => l !== listener)
-    };
-
-    dispatch({});
-
-    return { getState, dispatch, subscribe };
-  };
+  const {createStore} =window.Redux;
 
   const store = createStore(counter);
 

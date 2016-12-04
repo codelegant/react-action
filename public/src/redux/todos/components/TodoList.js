@@ -7,7 +7,7 @@ import React from 'react';
 import Todo from './Todo';
 const PropTypes = React.PropTypes;
 const TodoList = props=>(
-    <ul>
+    <ul ref={()=>console.log('TodoList')}>
       {props.todos.map(todo=>
           <Todo
               {...todo}

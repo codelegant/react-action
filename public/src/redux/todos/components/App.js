@@ -10,11 +10,11 @@ import AddTodo from '../containers/AddTodo';
 import VisibleTodoList from '../containers/VisibleTodoList';
 
 const App = () => (
-    <div>
-      <AddTodo />
-      <VisibleTodoList />
-      <Footer />
-    </div>
+  <div ref={() => console.log('App')}>
+    <AddTodo />
+    <VisibleTodoList />
+    <Footer />
+  </div>
 );
 
 export default App;
