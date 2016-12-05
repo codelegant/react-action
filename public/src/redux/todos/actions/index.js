@@ -11,24 +11,24 @@ export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
 let nextTodoId = 0;
 
-export const addTodo = text=>({
+export const addTodo = text => ({
   type: ADD_TODO,
-  id  : nextTodoId ++,
-  text
+  id: nextTodoId ++,
+  text,
 });
 
 export const setVisibilityFilter = filter => ({
   type: SET_VISIBILITY_FILTER,
-  filter
+  filter,
 });
 
 export const toggleTodo = id => ({
   type: TOGGLE_TODO,
-  id
+  id,
 });
 
 export const todoFilters = {
-  SHOW_ALL      : 'SHOW_ALL',
+  SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
-  SHOW_ACTIVE   : 'SHOW_ACTIVE'
+  SHOW_ACTIVE: 'SHOW_ACTIVE',
 };

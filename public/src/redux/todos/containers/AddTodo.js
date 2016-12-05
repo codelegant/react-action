@@ -20,7 +20,7 @@ let AddTodo = ({ dispatch }) => {
     e.preventDefault();
   };
   return (
-    <div ref={ref=>console.log('AddTodo')}>
+    <div ref={ref => console.log('AddTodo')}>
       <form onSubmit={e => submitHandler(e)}>
         <input ref={node => input = node}/>
         <button type="submit">Add Todo</button>

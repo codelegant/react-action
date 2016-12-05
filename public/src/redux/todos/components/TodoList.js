@@ -6,24 +6,24 @@
 import React from 'react';
 import Todo from './Todo';
 const PropTypes = React.PropTypes;
-const TodoList = props=>(
-    <ul ref={()=>console.log('TodoList')}>
-      {props.todos.map(todo=>
-          <Todo
-              {...todo}
-              key={todo.id}
-              onClick={()=>props.onTodoClick(todo.id)}
-          />
-      )}
-    </ul>
+const TodoList = props => (
+  <ul ref={() => console.log('TodoList')}>
+    {props.todos.map(todo =>
+      <Todo
+        {...todo}
+        key={todo.id}
+        onClick={() => props.onTodoClick(todo.id)}
+      />
+    )}
+  </ul>
 );
 TodoList.propTypes = {
   onTodoClick: PropTypes.func.isRequired,
   todos: PropTypes.arrayOf(React.PropTypes.shape({
     id: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
-    completed: PropTypes.bool.isRequired
-  }).isRequired).isRequired
+    completed: PropTypes.bool.isRequired,
+  }).isRequired).isRequired,
 };
 
 export default TodoList;

@@ -1,7 +1,7 @@
 /**
- * Author: CodeLai
- * Email: codelai@dotdotbuy.com
- * DateTime: 2016/7/18 15:05
+ * Author: 赖传峰
+ * Email: laichuanfeng@hotmail.com
+ * homepage: laichuanfeng.com
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -11,7 +11,7 @@ import todoApp from './reducers/index';
 import App from './components/App';
 
 ReactDOM.render(
-    <Provider store={createStore(todoApp)} >
-      <App />
-    </Provider>
-    , document.getElementById('container'));
+  <Provider store={createStore(todoApp)}>
+    <App />
+  </Provider>
+  , document.getElementById('container'));

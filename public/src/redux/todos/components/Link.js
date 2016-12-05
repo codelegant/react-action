@@ -6,24 +6,24 @@
  */
 import React from 'react';
 const PropTypes = React.PropTypes;
-const Link = props=> {
+const Link = props => {
   if (props.active) {
     return <span>{props.children}</span>;
   }
   return (
-      <a href="#"
-         onClick={e=> {
-           e.preventDefault();
-           props.onClick();
-         }} >
-        {props.children}
-      </a>
+    <a href="#"
+       onClick={e => {
+         e.preventDefault();
+         props.onClick();
+       }}>
+      {props.children}
+    </a>
   );
 };
 Link.propTypes = {
-  active  : PropTypes.bool.isRequired,
+  active: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  onClick : PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Link;
