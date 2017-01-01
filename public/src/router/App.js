@@ -15,29 +15,32 @@ import Redirect from 'react-router/lib/Redirect';
 import withRouter from 'react-router/lib/withRouter';
 import useBasename from 'history/lib/useBasename';
 
-const About = ()=><h2>About</h2>;
-const withExampleBasename = history => useBasename(() => history)({basename: `/view`});
-const Inbox = props=>(
-  <div>
-    <h2>Inbox</h2>
-    <ul>
-      <li><Link to="/messages/110?name=laichuanfeng">Message</Link></li>
-    </ul>
-    {props.children || 'Welcome to your Inbox'}
-  </div>
-);
-const Dashboard = ()=><h2>Welcome to the app!</h2>;
+import About from './About';
+import Inbox from './Inbox';
 
-const Message = props=><h3>Message, ID:{props.params.id}, Name:{props.location.query.name}</h3>;
+const withExampleBasename = history => useBasename(() => history)({ basename: `/view` });
 
-const App = props=>(
+const Dashboard = () => <h2>Welcome to the app!</h2>;
+
+const Message = props =>
+  <h3>Message, ID:{props.params.id},Name:{props.location.query.name}</h3>;
+
+/**
+ * 如果使用 <Link to="/">Home</Link>，当 / 下面的页面被访问时，Home 会被激活
+ * 为了避免这种情况，需要使用 <IndexLink to="/">Home</IndexLink>
+ */
+const App = props => (
   <div>
     <h1>App</h1>
     <ul>
-      <li><IndexLink to="/app.html">Home</IndexLink></li>
-      <li><Link to="/about">About</Link></li>
-      <li><Link to="/inbox">Inbox</Link></li>
-      <li><Link to="/page">Page</Link></li>
+      <li><IndexLink to="/app.html"
+                     activeStyle={{ color: 'red' }}>Home</IndexLink></li>
+      <li><Link to="/about"
+                activeStyle={{ color: 'red' }}>About</Link></li>
+      <li><Link to="/inbox"
+                activeStyle={{ color: 'red' }}>Inbox</Link></li>
+      <li><Link to="/page"
+                activeStyle={{ color: 'red' }}>Page</Link></li>
     </ul>
     {props.children}
   </div>
@@ -45,6 +48,12 @@ const App = props=>(
 
 class Page extends React.Component {
   componentDidMount() {
+    //进入后触发
+    console.log('Welcome to Page!');
+  }
+
+  componentWillUnmount() {
+    //离开前触发
     console.log('You have unsaved information, are you sure you want to leave this page?');
   }
 
@@ -59,19 +68,24 @@ render((
   <Router history={withExampleBasename(browserHistory)}>
     <Route path="/app.html"
            component={App}>
-      <IndexRoute component={Dashboard} />
+      <IndexRoute component={Dashboard}/>
       <Route path="/about"
-             component={About} />
+             component={About}/>
       <Route path="/page"
-             component={RouterPage} />
+             onEnter={(nextState, replace) => {
+               console.log('Enter Page');
+             }}
+             onLeave={() => {
+               console.log('Leave Page');
+             }}
+             component={RouterPage}/>
       <Route path="/inbox"
              component={Inbox}>
+        {/* 跳转 /inbox/messages/:id 到 /messages/:id */}
         <Redirect from="/inbox/messages/:id"
-                  to="/messages/:id" />
-      </Route>
-      <Route component={Inbox}>
+                  to="/messages/:id"/>
         <Route path="/messages/:id"
-               component={Message} />
+               component={Message}/>
       </Route>
     </Route>
   </Router>
