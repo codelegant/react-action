@@ -4,11 +4,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // console.log(process.env.src); //CLI  set src="http://locahost:8004"
 module.exports = {
   entry: {
-    // 'app': ['./public/src/router/App', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
+    'app': ['./public/src/router/App', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'animation': ['./public/src/animation', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
-     'todo': ['./public/src/redux/todos/index', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
+    //  'todo': ['./public/src/redux/todos/index', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
     // 'fetch': ['./public/src/fetch/fetch', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',]
   },
   output: {

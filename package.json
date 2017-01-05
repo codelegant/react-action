@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "dev": "webpack-dev-server",
-    "pub": "webpack --watch --progress --profile --colors --display-modules --display-error-details --display-cached --config webpack.pub.config.js",
+    "prod": "webpack --watch --progress --colors --display-error-details --display-cached --config webpack.prod.config.js",
     "server": "webpack --progress --profile --colors --display-modules --display-error-details --display-cached --config webpack.server.config.js",
     "profile": "webpack --progress --profile --json > profile.json"
   },
@@ -42,7 +42,7 @@
     "babel-jest": "^14.1.0",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
+    "babel-preset-react": "^6.16.0",
     "babel-preset-stage-0": "^6.5.0",
     "babel-register": "^6.14.0",
     "css-loader": "^0.23.1",

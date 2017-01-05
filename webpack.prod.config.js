@@ -3,9 +3,9 @@
  * Email: codelai@dotdotbuy.com
  * DateTime: 2016/7/15 16:40
  */
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // var pkg=require('./package.json');
 module.exports = {
   entry    : {
@@ -37,13 +37,10 @@ module.exports = {
   },
   target   : 'web',
   externals: {
-    // 'react': 'React',
-    // 'react-dom': 'ReactDOM',
-    // 'react-addons-css-transition-group':'ReactCSSTransitionGroup'
-    // "react-router": "ReactRouter",
-    // 'history': "History",
-    // 'redux': 'Redux',
-    // 'react-redux': 'ReactRedux'
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    "react-router": "ReactRouter",
+    'history': "History",
   },
   plugins  : [
     new webpack.DefinePlugin({
