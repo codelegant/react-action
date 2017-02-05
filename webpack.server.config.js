@@ -48,6 +48,9 @@ module.exports = {
     'react'    : 'React',
     'react-dom': 'ReactDOM',
   },
+  resolveLoader: {
+    moduleExtensions: ["-loader"],
+  },
   plugins  : [
     /**
      * 将生成的字符串 reactString 插入到模板中
@@ -75,10 +78,7 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')// production | true
       }
     }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false},
       output  : {comments: false}
     })
   ],

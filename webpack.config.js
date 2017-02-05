@@ -4,8 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // console.log(process.env.src); //CLI  set src="http://locahost:8004"
 module.exports = {
   entry: {
-    'app': ['./public/src/router/App', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
-    // 'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
+    // 'app': ['./public/src/router/App', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
+    'product': ['./public/src/product', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'animation': ['./public/src/animation', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/only-dev-server',],
     // 'demo': ['./public/src/demo', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
     //  'todo': ['./public/src/redux/todos/index', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',],
@@ -18,21 +18,20 @@ module.exports = {
   },
   devtool:'eval',
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js?$/,
-        loaders: ['react-hot', 'babel'],// short for babel-loader
-        exclude: /node_modules/
+        use: ['react-hot', 'babel'],
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
-        loader: 'style!css'// right-to-left and the loader are separated by '!'. Short for style-loader!css-loader
+        use: ['style','css']
       },
-      {
-        test:/\.js?$/,
-        loader:'imports?imgSrc=>"http://locahost:8004"'
-      }
     ],
+  },
+  resolveLoader: {
+    moduleExtensions: ["-loader"],
   },
   plugins: [
     new webpack.DefinePlugin({

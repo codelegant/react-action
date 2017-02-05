@@ -8,7 +8,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // var pkg=require('./package.json');
 module.exports = {
-  entry    : {
+  entry: {
     // 'app': './public/src/router/App'
     'product': './public/src/product',
     // 'demo'         : './public/src/demo',
@@ -16,61 +16,61 @@ module.exports = {
     // 'fetch': './public/src/fetch/fetch',
     // 'es5': './public/src/es5',
   },
-  output   : {
-    path         : path.join(__dirname + '/dist/'),
-    filename     : '[name].min.js?[hash:8]',//[name].js
+  output: {
+    path: path.join(__dirname + '/dist/'),
+    filename: '[name].min.js?[hash:8]',//[name].js
     libraryTarget: "var",
-    chunkFilename:'[name].min.js?[chunkhash:8]'
+    chunkFilename: '[name].min.js?[chunkhash:8]',
   },
-  module   : {
-    loaders: [
+  module: {
+    rules: [
       {
-        test   : /\.js?$/,
-        loader : 'babel',// short for babel-loader
-        exclude: /node_modules/
+        test: /\.js?$/,
+        loader: 'babel',
+        exclude: /node_modules/,
 
       },
       {
-        test  : /\.css$/,
-        loader: 'style!css'// right-to-left and the loader are separated by '!'. Short for style-loader!css-loader
+        test: /\.css$/,
+        use: ['style', 'css'],
       }
     ],
   },
-  target   : 'web',
+  resolveLoader: {
+    moduleExtensions: ["-loader"],
+  },
+  target: 'web',
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
     // "react-router": "ReactRouter",
     // 'history': "History",
   },
-  plugins  : [
+  plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')// production | true
       }
     }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
-      compress: {warnings: false},
-      output  : {comments: false}
+      output: { comments: false }
     }),
     new HtmlWebpackPlugin({
-      title      : 'Html Webpack Plugin',
-      template   : './view/pub.init.html',
-      keywords   : 'htmlwebpackplugin',
+      title: 'Html Webpack Plugin',
+      template: './view/pub.init.html',
+      keywords: 'htmlwebpackplugin',
       description: 'this is a webpack plugin',
-      inject     : 'body',
-      filename   : '../view/app.html',
-      minify     : {
-        minifyCSS         : true,
-        minifyJS          : true,
+      inject: 'body',
+      filename: '../view/app.html',
+      minify: {
+        minifyCSS: true,
+        minifyJS: true,
         collapseWhitespace: true,
-        sortAttributes    : true,
-        sortClassName     : true
+        sortAttributes: true,
+        sortClassName: true
       },
-      xhtml      : true,
-      hash       : false
+      xhtml: true,
+      hash: false
     })
   ],
 
