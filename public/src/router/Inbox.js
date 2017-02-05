@@ -16,4 +16,5 @@ const Inbox = props => (
   </div>
 );
 
-export default Inbox;
+// export default Inbox;
+module.exports=Inbox;

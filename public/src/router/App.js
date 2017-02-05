@@ -15,8 +15,8 @@ import Redirect from 'react-router/lib/Redirect';
 import withRouter from 'react-router/lib/withRouter';
 import useBasename from 'history/lib/useBasename';
 
-import About from './About';
-import Inbox from './Inbox';
+// import About from './About';
+// import Inbox from './Inbox';
 
 const withExampleBasename = history => useBasename(() => history)({ basename: `/view` });
 
@@ -62,6 +62,7 @@ class Page extends React.Component {
   }
 }
 
+const MessageInner = props => <div>MessageInner{props.children}</div>;
 const RouterPage = withRouter(Page);
 
 render((
@@ -69,8 +70,16 @@ render((
     <Route path="/app.html"
            component={App}>
       <IndexRoute component={Dashboard}/>
-      <Route path="/about"
-             component={About}/>
+      <Route
+        path="/about"
+        getComponent={
+          (location, callback) => {
+            require.ensure([], require => {
+              callback(null, require('./About'));
+            }, 'about');
+          }
+        }
+      />
       <Route path="/page"
              onEnter={(nextState, replace) => {
                console.log('Enter Page');
@@ -79,8 +88,16 @@ render((
                console.log('Leave Page');
              }}
              component={RouterPage}/>
-      <Route path="/inbox"
-             component={Inbox}>
+      <Route
+        path="/inbox"
+        getComponent={
+          (location, callback) => {
+            require.ensure([], require => {
+              callback(null, require('./Inbox'));
+            }, 'inbox');
+          }
+        }
+      >
         {/* 跳转 /inbox/messages/:id 到 /messages/:id */}
         <Redirect from="/inbox/messages/:id"
                   to="/messages/:id"/>
@@ -90,7 +107,6 @@ render((
     </Route>
   </Router>
 ), document.getElementById('container'));
-
 // const routes = {
 //   path       : '/',
 //   component  : App,

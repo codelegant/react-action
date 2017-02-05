@@ -9,8 +9,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // var pkg=require('./package.json');
 module.exports = {
   entry    : {
-    'app': './public/src/router/App'
-    // 'product': './public/src/product',
+    // 'app': './public/src/router/App'
+    'product': './public/src/product',
     // 'demo'         : './public/src/demo',
     // 'animation': './public/src/animation',
     // 'fetch': './public/src/fetch/fetch',
@@ -18,8 +18,9 @@ module.exports = {
   },
   output   : {
     path         : path.join(__dirname + '/dist/'),
-    filename     : '[name].min.js',//[name].js
-    libraryTarget: "var"
+    filename     : '[name].min.js?[hash:8]',//[name].js
+    libraryTarget: "var",
+    chunkFilename:'[name].min.js?[chunkhash:8]'
   },
   module   : {
     loaders: [
@@ -39,8 +40,8 @@ module.exports = {
   externals: {
     'react': 'React',
     'react-dom': 'ReactDOM',
-    "react-router": "ReactRouter",
-    'history': "History",
+    // "react-router": "ReactRouter",
+    // 'history': "History",
   },
   plugins  : [
     new webpack.DefinePlugin({

@@ -12,8 +12,9 @@ module.exports = {
     // 'fetch': ['./public/src/fetch/fetch', 'webpack-dev-server/client?http://localhost:4000', 'webpack/hot/dev-server',]
   },
   output: {
-    filename: '[name].js',
-    publicPath: '/'
+    filename: '[name].js?[hash:8]',
+    publicPath: '/',
+    chunkFilename:'[name].js?[chunkhash:8]'
   },
   devtool:'eval',
   module: {
